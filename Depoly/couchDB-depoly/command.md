@@ -19,6 +19,25 @@ sudo apt-get update
 sudo apt-get install docker.io
 ```
 ```bash
+sudo docker pull couchdb:latest
+```
+
+```bash
+sudo docker run -d \
+  --name my-couchdb \
+  -p 5984:5984 \
+  -v /data:/opt/couchdb/data \
+  -e COUCHDB_USER=admin \
+  -e COUCHDB_PASSWORD=password \
+  couchdb:latest
+```
+```bash
+sudo docker ps
+```
+
+
+##Dont use docker swarm for creating cluster couchdb!!!below!!!
+```bash
 sudo docker swarm init --advertise-addr 172.26.136.136
 ```
 
