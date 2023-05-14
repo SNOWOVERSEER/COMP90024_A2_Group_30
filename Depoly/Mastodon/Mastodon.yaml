@@ -2,8 +2,21 @@
 - name: Deploy Mastodon Docker service
   hosts: localhost
   tasks:
-    - name: Deploy service
-      command: >
-        docker service create --name mastodon_harvester_{{ ansible_date_time.epoch }} --replicas 1
-        --mount type=bind,source=/home/ubuntu/Mastodon,dst=/app --mount type=bind,source=/home/ubuntu/Mastodon/requirements.txt,dst=/requirements.txt
-        my_python_app:latest python /app/Mastodon_Harvester.py --token {{ token }} --url {{ url }}
+    - name: Build Docker image
+      docker_image:
+        path: ./
+        name: my_python_app
+        tag: latest
+        state: present
+        force: yes
+
+    - name: Run container
+      docker_container:
+        name: mastodon_harvester_{{ ansible_date_time.epoch }}
+        image: my_python_app:latest
+        command: python3 /app/Mastodon_Harvester.py --token {{ token }} --url {{ url }}
+        volumes:
+          - "/home/ubuntu/Mastodon:/app"
+          - "/home/ubuntu/Mastodon/requirements.txt:/requirements.txt"
+        state: started
+        restart_policy: always
