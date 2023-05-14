@@ -6,29 +6,45 @@ import csv, os, time, json
 
 class Listener(StreamListener):
     def on_update(self, status):
-        data = json.dumps(status, indent=2, sort_keys=True, default=str)
+        data = json.loads(json.dumps(status, indent=2, sort_keys=True, default=str))
+        language = data['language']
 
-        data = json.loads(data)
-        languages_dict[data['language']] = languages_dict.get(data['language'], 0) + 1
-        print(languages_dict)
-        # doc_id,doc_rev = db.save(languages_dict)
+        while True:
+            try:
+
+                # Fetch the document
+                doc = db.get('language_count')
+                if doc is None:
+                    # Create a new document if it doesn't exist
+                    doc = {"_id": 'language_count', language: 1}
+
+                else:
+                    # Increment the count if the document exists
+                    doc[language] = doc.get(language, 0) + 1
+
+                print(doc)
+                # Save the document and break the loop if successful
+                db.save(doc)
+                print('success')
+                break
+            except couchdb.http.ResourceConflict:
+                # Retry the operation if there was a conflict
+                continue
 
 
 if __name__ == '__main__':
-    # admin = 'admin'
-    # password = 'password'
-    # url = f'http://{admin}:{password}@127.0.0.1:5984'
-    #
-    # couch = couchdb.Server(url)
-    #
-    #
-    # db_name = 'mastodon'
-    #
-    # if db_name not in couch:
-    #     db = couch.create(db_name)
-    # else:
-    #     db = couch[db_name]
-    #
+    admin = 'admin'
+    password = 'password'
+    url = f'http://{admin}:{password}@172.26.132.185:80'
+
+    couch = couchdb.Server(url)
+
+    db_name = 'mastodon'
+
+    if db_name not in couch:
+        db = couch.create(db_name)
+    else:
+        db = couch[db_name]
 
     parser = argparse.ArgumentParser(description='mastodon token and url')
 
