@@ -1,26 +1,34 @@
+import threading
 import couchdb
 import argparse
 from mastodon import Mastodon, MastodonNotFoundError, MastodonRatelimitError, StreamListener
 import csv, os, time, json
 
-
 class Listener(StreamListener):
+    def __init__(self):
+        self.language_count = {}
+        self.update_interval = 20  # seconds
+        self.update_timer = threading.Timer(self.update_interval, self.update_db)
+        self.update_timer.start()
+
     def on_update(self, status):
         data = json.loads(json.dumps(status, indent=2, sort_keys=True, default=str))
         language = data['language']
+        if language != "en":
+            self.language_count[language] = self.language_count.get(language, 0) + 1
 
+    def update_db(self):
         while True:
             try:
-
                 # Fetch the document
                 doc = db.get('language_count')
                 if doc is None:
                     # Create a new document if it doesn't exist
-                    doc = {"_id": 'language_count', language: 1}
+                    doc = {"_id": 'language_count'}
 
-                else:
-                    # Increment the count if the document exists
-                    doc[language] = doc.get(language, 0) + 1
+                # Add the counts from memory to the document
+                for language, count in self.language_count.items():
+                    doc[language] = doc.get(language, 0) + count
 
                 print(doc)
                 # Save the document and break the loop if successful
@@ -30,6 +38,13 @@ class Listener(StreamListener):
             except couchdb.http.ResourceConflict:
                 # Retry the operation if there was a conflict
                 continue
+
+        # Clear the memory counter
+        self.language_count.clear()
+
+        # Restart the timer
+        self.update_timer = threading.Timer(self.update_interval, self.update_db)
+        self.update_timer.start()
 
 
 if __name__ == '__main__':
@@ -63,3 +78,5 @@ if __name__ == '__main__':
     languages_dict = {}
 
     m.stream_public(Listener())
+    while True:
+        time.sleep(1)
