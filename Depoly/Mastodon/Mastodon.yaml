@@ -8,7 +8,6 @@
         name: my_python_app
         tag: latest
         state: present
-        force: yes
 
     - name: Run container
       docker_container:
