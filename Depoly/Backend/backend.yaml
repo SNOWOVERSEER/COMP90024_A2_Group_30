@@ -1,0 +1,25 @@
+---
+- name: Deploy Django app
+  hosts: localhost
+  tasks:
+    - name: Build Docker image
+      docker_image:
+        path: ./
+        name: my_django_app
+        tag: latest
+        state: present
+        force: no
+
+    - name: Create Docker service
+      docker_swarm_service:
+        name: my_django_service
+        image: my_django_app:latest
+        args:
+          - "python manage.py runserver 0.0.0.0:8000"
+        publish:
+          - target_port: 8000
+            published_port: 8000
+        replicas: 2
+        state: present
+        restart_policy: any
+...
