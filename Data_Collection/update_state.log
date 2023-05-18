@@ -1,0 +1,114 @@
+2023-05-18 15:49:29,537 INFO Update information of state
+2023-05-18 15:49:31,734 INFO 
+2023-05-18 15:49:31,734 INFO ================================================================================
+2023-05-18 15:49:31,734 INFO Connecting to server: http://admin:password@172.26.129.1:5984
+2023-05-18 15:49:32,088 INFO Successfully updated!
+2023-05-18 15:49:32,088 INFO The content after the update:
+2023-05-18 15:49:32,298 INFO {
+    "_id": "state",
+    "_rev": "27-d36461775b9cd83d64b2929e403e6cb4",
+    "New South Wales": {
+        "in": 501,
+        "pt": 438,
+        "es": 388,
+        "ar": 358,
+        "ja": 280,
+        "tl": 196,
+        "tr": 163,
+        "th": 138,
+        "zh": 128,
+        "fr": 106,
+        "total": 2696
+    },
+    "Victoria": {
+        "ja": 545,
+        "es": 326,
+        "el": 240,
+        "zh": 216,
+        "fr": 212,
+        "ar": 205,
+        "in": 182,
+        "tl": 178,
+        "fa": 160,
+        "ko": 91,
+        "total": 2355
+    },
+    "Queensland": {
+        "in": 382,
+        "ja": 360,
+        "es": 165,
+        "tl": 162,
+        "ar": 146,
+        "ru": 129,
+        "hi": 101,
+        "pt": 90,
+        "fr": 63,
+        "it": 32,
+        "total": 1630
+    },
+    "South Australia": {
+        "es": 222,
+        "in": 67,
+        "tl": 47,
+        "fr": 34,
+        "ar": 22,
+        "it": 19,
+        "pt": 17,
+        "ht": 12,
+        "de": 11,
+        "nl": 10,
+        "total": 461
+    },
+    "West Australia": {
+        "zh": 164,
+        "ja": 87,
+        "in": 61,
+        "es": 50,
+        "ar": 46,
+        "pt": 43,
+        "tl": 43,
+        "fr": 24,
+        "de": 22,
+        "it": 20,
+        "total": 560
+    },
+    "Tasmania": {
+        "tl": 106,
+        "in": 29,
+        "es": 11,
+        "ne": 9,
+        "fr": 6,
+        "hi": 6,
+        "nl": 4,
+        "eu": 2,
+        "sv": 2,
+        "et": 2,
+        "total": 177
+    },
+    "Northern Territory": {
+        "es": 7,
+        "tl": 7,
+        "in": 4,
+        "de": 3,
+        "et": 3,
+        "cs": 2,
+        "sv": 1,
+        "cy": 1,
+        "ro": 1,
+        "eu": 1,
+        "total": 30
+    },
+    "Australian Capital Territory": {
+        "in": 37,
+        "es": 13,
+        "ja": 12,
+        "tl": 11,
+        "ca": 9,
+        "fr": 7,
+        "it": 7,
+        "nl": 7,
+        "pt": 7,
+        "zh": 7,
+        "total": 117
+    }
+}
