@@ -1,0 +1,15 @@
+{
+"type": "FeatureCollection",
+"name": "provinceSymb",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+"features": [
+{ "type": "Feature", "properties": { "gid": 4, "ste_code16": 4, "ste_name16": "South Australia", "areasqkm16": 984274.908, "value": 8000 }, "geometry": { "type": "Point", "coordinates": [ 136.914759535655037, -32.0 ] } },
+{ "type": "Feature", "properties": { "gid": 5, "ste_code16": 5, "ste_name16": "West Australia", "areasqkm16": 2526646.2389000002, "value": 5000 }, "geometry": { "type": "Point", "coordinates": [ 121.255, -24.58 ] } },
+{ "type": "Feature", "properties": { "gid": 3, "ste_code16": 3, "ste_name16": "Queensland", "areasqkm16": 1730172.0833000001, "value": 10000 }, "geometry": { "type": "Point", "coordinates": [ 143.095299682875265, -19.945 ] } },
+{ "type": "Feature", "properties": { "gid": 7, "ste_code16": 7, "ste_name16": "Northern Territory", "areasqkm16": 1348094.3281, "value": 2000 }, "geometry": { "type": "Point", "coordinates": [ 133.4975, -21.27 ] } },
+{ "type": "Feature", "properties": { "gid": 2, "ste_code16": 2, "ste_name16": "Victoria", "areasqkm16": 227495.6304, "value": 20000 }, "geometry": { "type": "Point", "coordinates": [ 144.545606617647081, -36.515 ] } },
+{ "type": "Feature", "properties": { "gid": 1, "ste_code16": 1, "ste_name16": "New South Wales", "areasqkm16": 800810.7823, "value": 15000 }, "geometry": { "type": "Point", "coordinates": [ 146.347, -32.83 ] } },
+{ "type": "Feature", "properties": { "gid": 6, "ste_code16": 6, "ste_name16": "Tasmania", "areasqkm16": 68017.8607, "value": 8000 }, "geometry": { "type": "Point", "coordinates": [ 146.651, -42.14 ] } },
+{ "type": "Feature", "properties": { "gid": 8, "ste_code16": 8, "ste_name16": "Australian Capital Territory", "areasqkm16": 2358.172, "value": 6000 }, "geometry": { "type": "Point", "coordinates": [ 148.957941558441576, -35.52 ] } }
+]
+}

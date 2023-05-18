@@ -1,0 +1,117 @@
+{
+    "type": "FeatureCollection",
+    "features": [
+      {
+        "type": "Feature",
+        "properties": {
+          "name": "Sydney"
+        },
+        "geometry": {
+          "coordinates": [
+            151.21742295345797,
+            -33.85409100980266
+          ],
+          "type": "Point"
+        },
+        "id": 0
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "name": "Melbourne"
+        },
+        "geometry": {
+          "coordinates": [
+            144.9562704067448,
+            -37.83250405257856
+          ],
+          "type": "Point"
+        },
+        "id": 1
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "name": "Brisbane"
+        },
+        "geometry": {
+          "coordinates": [
+            153.02288527982483,
+            -27.46795590763039
+          ],
+          "type": "Point"
+        },
+        "id": 2
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "name": "Adelaide"
+        },
+        "geometry": {
+          "coordinates": [
+            138.599623206067,
+            -34.92633181499823
+          ],
+          "type": "Point"
+        },
+        "id": 3
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "name": "Perth"
+        },
+        "geometry": {
+          "coordinates": [
+            115.85993938657435,
+            -31.953505957522196
+          ],
+          "type": "Point"
+        },
+        "id": 4
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "name": "Hobart"
+        },
+        "geometry": {
+          "coordinates": [
+            147.32728688785215,
+            -42.8829273732924
+          ],
+          "type": "Point"
+        },
+        "id": 5
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "name": "Darwin"
+        },
+        "geometry": {
+          "coordinates": [
+            130.90415666360934,
+            -12.426909911804657
+          ],
+          "type": "Point"
+        },
+        "id": 6
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "name": "Canberra"
+        },
+        "geometry": {
+          "coordinates": [
+            149.1015382248105,
+            -35.29815033051705
+          ],
+          "type": "Point"
+        },
+        "id": 7
+      }
+    ]
+  }
