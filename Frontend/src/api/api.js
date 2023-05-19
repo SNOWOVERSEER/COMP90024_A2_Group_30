@@ -4,21 +4,21 @@ import axios from "axios";
 export function getStateData() {
   return request({
     method: "get",
-    url: "/get-state",
+    url: "/get-state/",
   });
 }
 
 export function getMastodon() {
     return request({
       method: "get",
-      url: "/get-mastodon",
+      url: "/get-mastodon/",
     });
 }
 
 export function getImmigration() {
     return request({
       method: "get",
-      url: "/get-immigration",
+      url: "/get-immigration/",
     });
 }
 

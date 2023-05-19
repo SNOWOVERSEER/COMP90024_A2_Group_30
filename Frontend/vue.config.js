@@ -10,7 +10,7 @@ module.exports = defineConfig({
       patterns: [],
     },
   },
-  devServer:{
-    proxy: "http://172.26.135.233:8000"
-  }
+  // devServer:{
+  //   proxy: "http://172.26.135.233:8000"
+  // }
 });

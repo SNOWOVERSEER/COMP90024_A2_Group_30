@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const request = axios.create({
-  baseURL: "/", 
+  baseURL: "http://172.26.135.233:8000", 
   timeout: 60000, // When the request exceeds 60 seconds without obtaining a result, the user will be notified of a timeout.
 });
 

@@ -128,7 +128,7 @@ export default {
         this.getDataTimer = setTimeout(() => {
           console.log('========')
           this.dealData()
-        }, 9000);
+        }, 3000);
       }).catch(error => {
         console.log(error)
       })
