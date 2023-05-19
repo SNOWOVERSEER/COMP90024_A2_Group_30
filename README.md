@@ -1,3 +1,3 @@
 # COMP90024_A2
 ## frontend
-Vue + Element Plus + Router
+Vue3.0 + Element Plus + Router + Mapbox + Echart
