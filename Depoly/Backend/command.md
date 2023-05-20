@@ -1,4 +1,7 @@
 ```bash
+sudo apt-get update
+sudo apt-get install docker.io
+sudo apt-get install ansible
 docker build -t my-django-app .
 ```
 
