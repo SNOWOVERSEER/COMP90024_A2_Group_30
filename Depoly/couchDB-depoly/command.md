@@ -34,21 +34,3 @@ sudo docker run -d \
 ```bash
 sudo docker ps
 ```
-
-
-##Dont use docker swarm for creating cluster couchdb!!!below!!!
-```bash
-sudo docker swarm init --advertise-addr 172.26.136.136
-```
-
-```bash
-sudo docker swarm join --token SWMTKN-1-2an433ynq9jr8tjco94c32awokjcspzym9w58co3gl0v6oq7rw-4hthfue5qvfwc9myry0xu2o4t 172.26.136.136:2377
-```
-
-```bash
-sudo docker stack deploy -c docker-compose.yaml couchdb
-```
-
-```bash
-sudo docker service ps couchdb_couchdb
-```
