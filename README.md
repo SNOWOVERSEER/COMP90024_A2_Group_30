@@ -3,7 +3,7 @@
 Docker + Vue3.0 + Element Plus + Router + Mapbox + Echart
 
 ## backend
-Docker swarm 2 replicas + Django
+Ansible + Docker swarm 2 replicas + Django
 
 ## DB
 Docker + Distributed CouchDB Cluster + Nginx
