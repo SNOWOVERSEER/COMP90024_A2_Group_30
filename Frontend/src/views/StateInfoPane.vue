@@ -37,7 +37,7 @@ export default {
                 grid: {
                     top: 10,
                     left: 35,
-                    right: 35,
+                    right: 45,
                     bottom: 20,
                 },
                 yAxis: {
