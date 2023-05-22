@@ -8,14 +8,12 @@ def get_random_database():
     databases = list(settings.COUCHDB_DATABASES.keys())
     return random.choice(databases)
 
-
-def get_amin_database():
-    databases = settings.COUCHDB_DATABASES["mastodon"]
-    return databases
-
-
 def get_state_database():
     databases = settings.COUCHDB_DATABASES["state"]
+    return databases
+
+def get_mastodon_database():
+    databases = settings.COUCHDB_DATABASES["mastodon"]
     return databases
 
 
