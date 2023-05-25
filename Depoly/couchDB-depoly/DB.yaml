@@ -1,0 +1,112 @@
+- name: Install Docker SDK for Python
+  hosts: localhost
+  become: yes
+  tasks:
+    - name: Update apt cache
+      apt:
+        update_cache: yes
+      become: yes
+
+    - name: Ensure pip is installed
+      apt:
+        name: python3-pip
+        state: present
+      become: yes
+
+    - name: Install Docker SDK for Python
+      pip:
+        name: docker
+        state: present
+      become: yes
+
+- name: Mount disk and update fstab
+  hosts: localhost
+  become: yes
+  tasks:
+    - name: Check available disks
+      command: fdisk -l
+      register: disk_info
+      changed_when: false
+
+    - name: Check if /dev/vdb is mounted
+      command: mountpoint -q /data
+      register: disk_mounted
+      changed_when: false
+      ignore_errors: true
+
+    - name: Format disk
+      command: mkfs.ext4 /dev/vdb
+      when:
+        - "'/dev/vdb' in disk_info.stdout"
+        - disk_mounted is failed
+
+    - name: Create directory
+      file:
+        path: /data
+        state: directory
+      become: yes
+      when: disk_mounted is failed
+
+    - name: Mount disk
+      mount:
+        path: /data
+        src: /dev/vdb
+        fstype: ext4
+        state: mounted
+      become: yes
+      when: disk_mounted is failed
+
+    - name: Update fstab
+      lineinfile:
+        path: /etc/fstab
+        line: '/dev/vdb /data ext4 defaults 0 1'
+        state: present
+      become: yes
+      when: disk_mounted is failed
+
+- name: Install Docker
+  hosts: localhost
+  become: yes
+  tasks:
+    - name: Update apt cache
+      apt:
+        update_cache: yes
+
+    - name: Install Docker
+      apt:
+        name: docker.io
+        state: present
+
+- name: Pull CouchDB Docker image and run container
+  hosts: localhost
+  become: yes
+  tasks:
+    - name: Check if CouchDB image exists
+      command: docker images -q couchdb:latest
+      register: couchdb_image
+      changed_when: false
+
+    - name: Check if CouchDB container exists
+      command: docker ps -q -f name=my-couchdb
+      register: couchdb_container
+      changed_when: false
+
+    - name: Pull CouchDB image
+      docker_image:
+        name: couchdb:latest
+        state: present
+      when: couchdb_image.stdout == ""
+
+    - name: Run CouchDB container
+      docker_container:
+        name: my-couchdb
+        image: couchdb:latest
+        ports:
+          - "5984:5984"
+        volumes:
+          - "/data:/opt/couchdb/data"
+        env:
+          COUCHDB_USER: admin
+          COUCHDB_PASSWORD: password
+        state: started
+      when: couchdb_container.stdout == ""
