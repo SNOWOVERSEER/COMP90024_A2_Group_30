@@ -31,16 +31,16 @@ def resolve_conflicts(db, doc_id):
                 db.delete(revision)
 
 
-
 class Listener(StreamListener):
     def __init__(self):
         self.language_count = {}
         self.update_interval = 15  # seconds
-        self.update_timer = threading.Timer(self.update_interval, self.update_db)
-        self.update_timer.start()
+        # self.update_timer = threading.Timer(self.update_interval, self.update_db)
+        # self.update_timer.start()
 
     def on_update(self, status):
         data = json.loads(json.dumps(status, indent=2, sort_keys=True, default=str))
+        print(data)
         language = data['language']
         if language != "en":
             print(self.language_count)
