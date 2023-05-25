@@ -34,3 +34,11 @@ sudo docker run -d \
 ```bash
 sudo docker ps
 ```
+
+##if use ansible
+```bash
+sudo apt-get update
+sudo apt-get install ansible
+ansible-playbook DB.yaml
+```
+
