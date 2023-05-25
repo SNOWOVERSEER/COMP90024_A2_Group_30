@@ -1,0 +1,44 @@
+- name: Configure NGINX for CouchDB
+  hosts: localhost
+  become: yes
+  tasks:
+    - name: Update apt cache
+      apt:
+        update_cache: yes
+
+    - name: Install NGINX
+      apt:
+        name: nginx
+        state: present
+
+    - name: Configure couchdb.conf
+      replace:
+        path: /etc/nginx/conf.d/couchdb.conf
+        regexp: 'upstream couchdb_cluster {.*?}'
+        replace: |
+          upstream couchdb_cluster {
+              least_conn;
+              server 172.26.129.1:5984;
+              server 172.26.128.178:5984;
+              server 172.26.136.28:5984;
+          }
+
+          server {
+              listen 80 default_server;
+              listen [::]:80 default_server;
+
+              location / {
+                  proxy_pass http://couchdb_cluster;
+              }
+          }
+
+    - name: Test NGINX configuration
+      command: nginx -t
+      register: nginx_test
+      changed_when: false
+
+    - name: Reload NGINX
+      systemd:
+        name: nginx
+        state: reloaded
+      when: "'successful' in nginx_test.stdout"
