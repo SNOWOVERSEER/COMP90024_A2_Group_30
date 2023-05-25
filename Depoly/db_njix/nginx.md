@@ -8,4 +8,15 @@ sudo nginx -t
 
 sudo systemctl reload nginx
 
+
 ```
+
+### If use ansible ###
+```bash
+sudo apt-get update
+sudo apt-get install ansible
+ansible-playbook nginx.yaml
+
+
+```
+
