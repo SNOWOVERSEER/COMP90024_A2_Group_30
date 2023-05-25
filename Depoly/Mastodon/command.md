@@ -17,3 +17,4 @@ docker service logs -f -n 0
 
 docker service ls
 ```
+conflicts.py can be used to clear conflicts in couchdb
