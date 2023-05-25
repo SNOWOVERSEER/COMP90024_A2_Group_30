@@ -1,4 +1,4 @@
-# COMP90024_A2
+# COMP90024_A2_Group_30
 ## frontend
 Ansible + Docker + Vue3.0 + Element Plus + Router + Mapbox + Echart + Axios
 
